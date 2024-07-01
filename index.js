@@ -7,7 +7,10 @@ const port = process.env.PORT || 3000;
 
 // Initialize Firebase Admin SDK
 console.log('Initializing Firebase Admin SDK...');
-const serviceAccount = require('./hush-df0a6-firebase-adminsdk-wkfht-5f8773a34c.json');
+require('dotenv').config();
+
+// Parse the service account JSON from environment variable
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
